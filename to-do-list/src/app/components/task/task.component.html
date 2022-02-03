@@ -1,0 +1,58 @@
+<div *ngIf="!task.isEditing" class="task-container {{ (task.isCompleted ? 'done' : '') }}" >
+    <input
+        type="checkbox" 
+        [checked]="task.isCompleted" 
+        (click)="toggleDone()" 
+        class="task-container__checkbox"
+        [(ngModel)]="task.isCompleted"
+    />
+    <div class="content-container">
+        <div class="content-container__content" >
+            {{ task.content }}
+        </div>
+        <div class="content-container__description" >
+            {{ task.description }}
+        </div>
+        <div class="content-container__task-date {{ (task.state === 'Overdue' ? 'overdue' : task.state === 'Upcoming' ? 'upcoming' : '') }}"> 
+            {{ printData(task.date)}}
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button class="button-container__edit-button button" (click)="changeFields()">
+            Edit
+        </button>
+        <button class="button-container__delete-button button" (click)="deleteTask()">
+            Remove
+        </button>
+    </div>
+    
+</div>
+
+<div class="task-container__on-edit" *ngIf="task.isEditing">
+    <input 
+        class="task-container__content__on-edit" 
+        placeholder="Enter task name"
+        value="{{ task.content }}"
+        [(ngModel)]="taskName" 
+        required
+    />
+    <input 
+        class="task-container__description__on-edit" 
+        placeholder="Add description"
+        value="{{ task.description }}"
+        [(ngModel)]="taskDescription"
+    />
+    <input 
+        class="task-container__input-date__on-edit" 
+        type="date"
+        [(ngModel)]="taskDate"
+    />
+    <button class="save-button button" (click)="saveChanges()">
+        Save
+    </button>
+</div>
+<div class="error-container">
+    {{errorMessage}}
+</div>
+

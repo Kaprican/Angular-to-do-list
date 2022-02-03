@@ -1,0 +1,88 @@
+@import "./../../../assets/_library.less";
+
+.task-container {
+    display: flex;
+    padding: 10px 15px;
+    border-bottom: 1px solid #DDD;
+
+    color: @text-color;
+    cursor: move;
+    background: white;
+    
+
+    &:last-of-type {
+        border-bottom: none;
+    }
+
+    &.done {
+        color: gray;
+
+        .content-container__content {
+            text-decoration: line-through;
+        }
+
+        .content-container__task-date {
+            color: gray;
+        }
+    }
+
+    .task-container__checkbox {
+        flex: 0 0 auto;
+        margin-right: 1rem;
+        accent-color: @highlight-color;
+    }
+
+    .content-container {
+        display: flex;
+        flex: 1 1 100%;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .content-container__content {
+            flex-wrap: wrap;
+        }
+
+        .content-container__description {
+            font-size: .7rem;
+            flex-wrap: wrap;
+        }
+
+        .content-container__task-date {
+            font-size: .8rem;
+        }
+    }
+
+    .button-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: .5rem;
+        padding: .5rem;
+ 
+    }
+}
+
+.task-container__on-edit {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button {
+    border: 1px solid @highlight-color;
+    border-radius: 3px;
+    background-color: @main-color;
+}
+
+.overdue {
+    color: @tetrary-color;
+}
+
+.upcoming.content-container__task-date {
+    color: @highlight-color;
+}
+
+.error-container {
+    color: @tetrary-color;
+    text-align: center;
+}

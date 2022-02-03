@@ -1,0 +1,17 @@
+<div class="list">
+    <app-task-adder
+        (taskAdded)="onAddTask($event)"
+    >
+    </app-task-adder>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)"> 
+        <app-task 
+            *ngFor="let task of taskList; let i = index;" 
+            class="task"
+            [task]="task"
+            (isDeleted)="onDeleteTask($event)"
+            (editTask)="onEditTask($event)"
+            cdkDrag
+        >
+        </app-task>
+    </div>
+</div>

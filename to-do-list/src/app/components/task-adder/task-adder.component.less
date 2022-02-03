@@ -1,0 +1,46 @@
+@import "./../../../assets/_library.less";
+
+.form {
+
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+    margin: auto;
+
+    .form__task-input {
+        display: block;
+        width: 100%;
+        padding: .5rem .7rem;
+        appearance: none;
+        border: none;
+        border-radius: 3px;
+        background-color: @main-color;
+        color: @text-color;
+        outline: none;
+    }
+    
+    .form__task-submit {
+        display: block;
+        width: 100%;
+        max-width: 200px;
+        appearance: none;
+        border: none;
+        outline: none;
+    
+        background-color: @highlight-color;
+        border-radius: 3px;
+        color: @text-color;
+        margin: 15px auto;
+        padding: 10px 15px;
+        font-weight: bold;
+    }
+
+    .form__error-container {
+        color: @tetrary-color;
+    }
+}
+
+.label {
+    margin-top: 1rem;
+    margin-bottom: .3rem;
+}
