@@ -9,7 +9,7 @@
         name="taskName"
         placeholder="Enter task name"
         class="form__task-input"
-        [(ngModel)]="taskName"
+        [(ngModel)]="task.name"
         required
     />
     <label 
@@ -22,7 +22,7 @@
         name="taskDescription"
         placeholder="Add description"
         class="form__task-input"
-        [(ngModel)]="taskDescription"
+        [(ngModel)]="task.description"
     />
     <label 
         class="form__task-name-label label" 
@@ -33,7 +33,7 @@
         type="date" 
         name="taskDate"
         class="form__task-input"
-        [(ngModel)]="taskDate"
+        [(ngModel)]="task.date"
     />
 
     <div 

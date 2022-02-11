@@ -1,13 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ITask, TaskState } from 'src/app/models/task';
 import { getTaskStateByDate } from 'src/app/helpers/getTaskStateByDate';
-import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.less'],
-  providers: [DatePipe]
+  styleUrls: ['./task.component.less']
 })
 export class TaskComponent implements OnInit {
 
@@ -18,10 +16,6 @@ export class TaskComponent implements OnInit {
   taskDescription: string | undefined;
   taskDate: string | undefined;
   errorMessage: string | null = null;
-
-  constructor(private datePipe: DatePipe) {
-
-  }
 
   ngOnInit() : void {
     this.taskName = this.task.content;
@@ -49,13 +43,13 @@ export class TaskComponent implements OnInit {
 
   saveChanges() : void { 
     if (!this.taskName) {
-      this.errorMessage = "You can't save task without name";
+      this.errorMessage = "You can't save task without a name";
       return;
     }
     const taskDateValue = this.taskDate ? new Date(this.taskDate) : undefined;
 
     this.editTask.emit({
-      content: this.taskName  || '',
+      content: this.taskName,
       description: this.taskDescription || '',
       date: taskDateValue,
       isCompleted: this.task.isCompleted,
@@ -66,10 +60,5 @@ export class TaskComponent implements OnInit {
     this.task.isEditing = false;
     this.errorMessage = null;
   }
-
-  printData(date: Date | undefined) : string | null {
-    return date ? this.datePipe.transform(date, "dd.MM.yyyy") : '';
-  }
-
 
 }
